@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Playlist.exe ❤️</title>
+
+<style>
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 850px;
+  margin: auto;
+  padding: 60px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.6em;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #9a9a9a;
+  margin-bottom: 40px;
+}
+
+/* ===== PLAYLIST ===== */
+.playlist {
+  background: #121212;
+  border-radius: 18px;
+  padding: 30px;
+}
+
+.song {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 10px;
+  border-bottom: 1px solid #1f1f1f;
+}
+
+.song:last-child {
+  border-bottom: none;
+}
+
+.song-title {
+  font-size: 1.05em;
+}
+
+.song-desc {
+  font-size: 0.88em;
+  color: #b0b0b0;
+  margin-top: 4px;
+}
+
+.song a {
+  color: #e63946;
+  text-decoration: none;
+  font-size: 0.9em;
+}
+
+.song a:hover {
+  text-decoration: underline;
+}
+
+/* ===== VIDEO ===== */
+.video-section {
+  margin-top: 50px;
+}
+
+iframe {
+  width: 100%;
+  height: 360px;
+  border-radius: 16px;
+  border: none;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 0.85em;
+  color: #9a9a9a;
+}
+
+/* ===== HEARTS ===== */
+.heart {
+  position: fixed;
+  top: -10px;
+  color: #e63946;
+  font-size: 10px;
+  opacity: 0.4;
+  animation: fall linear infinite;
+  z-index: 1;
+}
+
+@keyframes fall {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(120vh);
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Playlist.exe ❤️</h1>
+  <p class="subtitle">
+    Some feelings are quieter than words.<br>
+    These songs carry them for me.
+  </p>
+
+  <div class="playlist">
+
+    <!-- SONG 1 -->
+    <div class="song">
+      <div>
+        <div class="song-title">Song Name 1</div>
+        <div class="song-desc">Why this song reminds me of you.</div>
+      </div>
+      <a href="SONG_LINK_HERE" target="_blank">Listen</a>
+    </div>
+
+    <!-- SONG 2 -->
+    <div class="song">
+      <div>
+        <div class="song-title">Song Name 2</div>
+        <div class="song-desc">What I feel when this plays.</div>
+      </div>
+      <a href="SONG_LINK_HERE" target="_blank">Listen</a>
+    </div>
+
+  </div>
+
+  <div class="video-section">
+    <h2>🎥 Things I Want You To Know</h2>
+    <iframe src="VIDEO_LINK_HERE" allowfullscreen></iframe>
+  </div>
+
+  <footer>
+    Made quietly, with love.<br>
+    From a metallurgy student to her favorite computer science boy.
+  </footer>
+</div>
+
+<!-- GENTLE HEARTS -->
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (18 + Math.random() * 10) + "s";
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 30000);
+}
+
+setInterval(createHeart, 1200);
+</script>
+
+</body>
+</html>
+
+

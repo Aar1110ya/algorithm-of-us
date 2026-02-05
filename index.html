@@ -20,7 +20,6 @@ body{
   margin:auto;
   padding:60px 20px;
   position:relative;
-  z-index:2;
 }
 
 /* typing title */
@@ -133,12 +132,16 @@ body{
 }
 
 /* modal */
-.modal{
+
+  .modal{
   position:fixed;
   inset:0;
   display:none;
-  background:rgba(0,0,0,.7);
-  backdrop-filter:blur(6px);
+  background:rgba(0,0,0,.75);
+  backdrop-filter:blur(8px);
+
+  /* ADD THESE */
+  z-index:9999;
   align-items:center;
   justify-content:center;
 }
@@ -183,17 +186,17 @@ body{
 
 <h2 style="margin-top:60px">Our Moments 📸</h2>
 <div class="gallery">
-<img src="g1.jpeg">
-<img src="g22.jpeg">
-<img src="g3.jpeg">
-<img src="g4.jpeg">
-<img src="g17.jpeg">
-<img src="g11.jpeg">
-<img src="g7.jpeg">
-<img src="g15.jpeg">
-<img src="g23.jpeg">
-<img src="g5.jpeg">
-<img src="g10.jpeg">
+<img src="1.jpeg">
+<img src="22.jpeg">
+<img src="3.jpeg">
+<img src="4.jpeg">
+<img src="17.jpeg">
+<img src="11.jpeg">
+<img src="7.jpeg">
+<img src="15.jpeg">
+<img src="23.jpeg">
+<img src="5.jpeg">
+<img src="10.jpeg">
 </div>
 
 </div>

@@ -13,7 +13,6 @@ body{
   overflow-x:hidden;
 }
 
-/* container */
 .container{
   max-width:950px;
   margin:auto;
@@ -24,27 +23,17 @@ body{
 
 /* intro */
 .intro{text-align:center;margin-bottom:50px;}
-.intro h1{font-size:2.8em;margin-bottom:8px;}
-#timer{color:#e63946;margin-top:8px;}
+.intro h1{font-size:2.7em;margin-bottom:8px;}
+#timer{color:#e63946;margin-top:8px}
 
-/* button */
-button{
-  background:#161616;
-  color:white;
-  border:none;
-  padding:8px 14px;
-  border-radius:8px;
-  cursor:pointer;
-}
-
-/* songs */
+/* song cards */
 .song{
   display:flex;
   align-items:center;
   gap:18px;
   background:#161616;
-  margin-bottom:14px;
   padding:14px;
+  margin-bottom:14px;
   border-radius:14px;
   transition:.25s;
 }
@@ -55,15 +44,15 @@ button{
 }
 
 .song img{
-  width:80px;
-  height:80px;
-  object-fit:cover;
+  width:85px;
+  height:85px;
   border-radius:10px;
+  object-fit:cover;
 }
 
 .song-info{flex:1;}
-.song-title{font-weight:bold;}
-.song-desc{font-size:.9em;color:#aaa;margin-top:3px;}
+.song-title{font-weight:bold}
+.song-desc{font-size:.9em;color:#aaa;margin-top:4px}
 
 .song a{
   color:#e63946;
@@ -71,8 +60,12 @@ button{
   margin-right:12px;
 }
 
-.like{cursor:pointer;font-size:20px;color:#555;}
-.like.active{color:#e63946;}
+.like{
+  cursor:pointer;
+  font-size:20px;
+  color:#555;
+}
+.like.active{color:#e63946}
 
 /* gallery */
 .gallery{
@@ -81,25 +74,18 @@ button{
   gap:10px;
   margin-top:40px;
 }
-.gallery img{
-  width:100%;
-  border-radius:10px;
-}
+.gallery img{width:100%;border-radius:10px}
 
 /* letter */
-.letter{
-  text-align:center;
-  color:#aaa;
-  margin-top:60px;
-}
+.letter{text-align:center;margin-top:60px;color:#aaa}
 
-/* falling hearts */
+/* hearts */
 .heart{
   position:fixed;
   top:-10px;
-  color:#e63946;
   font-size:10px;
-  opacity:.3;
+  color:#e63946;
+  opacity:.35;
   animation:fall linear infinite;
   z-index:1;
 }
@@ -108,7 +94,7 @@ button{
   to{transform:translateY(120vh)}
 }
 
-/* aesthetic modal */
+/* aesthetic popup */
 .modal{
   position:fixed;
   inset:0;
@@ -120,9 +106,8 @@ button{
   opacity:0;
   pointer-events:none;
   transition:.3s;
-  z-index:999;
 }
-.modal.active{opacity:1;pointer-events:auto;}
+.modal.active{opacity:1;pointer-events:auto}
 
 .modal-box{
   background:#161616;
@@ -131,7 +116,15 @@ button{
   text-align:center;
   box-shadow:0 0 25px rgba(230,57,70,.4);
 }
-.modal-box h3{color:#e63946;margin-bottom:10px;}
+
+button{
+  background:#161616;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
 </style>
 </head>
 
@@ -139,21 +132,238 @@ button{
 <body>
 <div class="container">
 
-<!-- ===== INTRO ===== -->
+<!-- INTRO -->
 <div class="intro">
 <h1>Hi Raj ❤️</h1>
-<p>I couldn't wrap my feelings in a gift, so I coded them instead.</p>
+<p>I couldn’t wrap my feelings in a gift, so I coded them instead.</p>
 <p id="timer"></p>
-
 <button onclick="openModal()">Run Love.exe</button>
 </div>
 
 
-<!-- ===== SONG LIST ===== -->
-<div id="songs"></div>
+<!-- ===== SONGS (YOUR EXACT DATA) ===== -->
+
+<!-- 1 -->
+<div class="song">
+<img src="1.jpeg">
+<div class="song-info">
+<div class="song-title">YE FITOOR MERA</div>
+<div class="song-desc">Our beginning, wrapped in one song.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=ZkqhiiL2kSo" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 2 -->
+<div class="song">
+<img src="2.jpeg">
+<div class="song-info">
+<div class="song-title">BEKAL BHELA JIYARA</div>
+<div class="song-desc">This song feels like home and you.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=qG2YhCvK1g" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 3 -->
+<div class="song">
+<img src="3.jpeg">
+<div class="song-info">
+<div class="song-title">DOORON DOORON</div>
+<div class="song-desc">Even distance chooses you.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=U_nAFr9TLy" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+  <!-- 4 -->
+<div class="song">
+<img src="4.jpeg">
+<div class="song-info">
+<div class="song-title">PEHLA NASHA</div>
+<div class="song-desc">Still the same first-love feeling.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=1R8MGdgZDns" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 5 -->
+<div class="song">
+<img src="5.jpeg">
+<div class="song-info">
+<div class="song-title">SAMJHAWAN</div>
+<div class="song-desc">I stayed because my heart already belonged to you.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=puWplolLNzQ" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 6 -->
+<div class="song">
+<img src="6.jpeg">
+<div class="song-info">
+<div class="song-title">MAIN RANG SHARBATON KA</div>
+<div class="song-desc">This song feels like home, and so do you.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=cE4atI_v_Z0" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 7 -->
+<div class="song">
+<img src="7.jpeg">
+<div class="song-info">
+<div class="song-title">TU HI MERA</div>
+<div class="song-desc">I didn’t search. I found.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=_927Er2ZQMI" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 8 -->
+<div class="song">
+<img src="8.jpeg">
+<div class="song-info">
+<div class="song-title">DAGABAAZ RE</div>
+<div class="song-desc">Your favourite way to escape my anger.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=9CmAUpXtVFc" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 9 -->
+<div class="song">
+<img src="9.jpeg">
+<div class="song-info">
+<div class="song-title">OK JAANU</div>
+<div class="song-desc">Love, but make it effortless.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=QN507xqvG0w" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 10 -->
+<div class="song">
+<img src="10.jpeg">
+<div class="song-info">
+<div class="song-title">PEHLI NAZAR MEIN</div>
+<div class="song-desc">Everything changed right here.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=swcCuuQKGJ4" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 11 -->
+<div class="song">
+<img src="11.jpeg">
+<div class="song-info">
+<div class="song-title">HAAREYA</div>
+<div class="song-desc">I hope you find us in this song, the way I do.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=C14askJ1to8" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 12 -->
+<div class="song">
+<img src="12.jpeg">
+<div class="song-info">
+<div class="song-title">KABHI KABHI MERE DIL MEIN</div>
+<div class="song-desc">In your arms, far from the world.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=S7TVf9-Cbps" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 13 -->
+<div class="song">
+<img src="13.jpeg">
+<div class="song-info">
+<div class="song-title">TERE LIYE</div>
+<div class="song-desc">Just you.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=5U5R0nTiUMs" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 14 -->
+<div class="song">
+<img src="14.jpeg">
+<div class="song-info">
+<div class="song-title">ARZ KIYA HAI</div>
+<div class="song-desc">Not a confession, it’s an offering.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=BJt4fCAtZE" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 15 -->
+<div class="song">
+<img src="15.jpeg">
+<div class="song-info">
+<div class="song-title">AAJ DIN CHADHEYA</div>
+<div class="song-desc">The kind of love that doesn’t rush the sunrise.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=s9gd8bxkzzs" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 16 -->
+<div class="song">
+<img src="16.jpeg">
+<div class="song-info">
+<div class="song-title">ISS DEEWANE LADKE KO</div>
+<div class="song-desc">Exactly what my heart screams everytime with you.</div>
+</d
+
+  <!-- 17 -->
+<div class="song">
+<img src="17.jpeg">
+<div class="song-info">
+<div class="song-title">KAISE MUJHE TUM MIL GAYI</div>
+<div class="song-desc">Some meetings don’t feel accidental, just inevitable.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=6NeVceOd6yi" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 18 -->
+<div class="song">
+<img src="18.jpeg">
+<div class="song-info">
+<div class="song-title">MILAN ABHI AADHA ADHURA</div>
+<div class="song-desc">Someday…</div>
+</div>
+<a href="https://music.youtube.com/watch?v=o-5-bvi4He0" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 19 -->
+<div class="song">
+<img src="19.jpeg">
+<div class="song-info">
+<div class="song-title">ME BECAUSE OF YOU</div>
+<div class="song-desc">❤️❤️</div>
+</div>
+<a href="https://music.youtube.com/watch?v=URuF7fWM8FQ" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
+
+<!-- 20 -->
+<div class="song">
+<img src="20.jpeg">
+<div class="song-info">
+<div class="song-title">OFFO</div>
+<div class="song-desc">Us coded.</div>
+</div>
+<a href="https://music.youtube.com/watch?v=PXrY9ohnAVM" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>
 
 
-<!-- ===== GALLERY ===== -->
+
+
+<!-- GALLERY -->
 <h2>Our Moments 📸</h2>
 <div class="gallery">
 <img src="11.jpeg">
@@ -164,88 +374,49 @@ button{
 <img src="16.jpeg">
 <img src="17.jpeg">
 <img src="18.jpeg">
+  <img src="21.jpeg">
+  <img src="1.jpeg">
+  <img src="4.jpeg">
+  <img src="7.jpeg">
+  <img src="2.jpeg">
+  <img src="9.jpeg">
+  
 </div>
 
 
-<!-- ===== LETTER ===== -->
+<!-- LETTER -->
 <div class="letter">
-<p>
-Made with chaos,patience and love,<br>
-from a metallurgy girl to her favourite computer science boy❤️
-</p>
-
-<button onclick="openLoveNote()">Click if you're smiling 🙂</button>
+<p>Made with chaos, patience and love,<br>from a metallurgy girl to her favourite computer science boy ❤️</p>
+<button onclick="openNote()">Click if you're smiling 🙂</button>
 </div>
 
 </div>
 
 
-<!-- ===== MODALS ===== -->
-<div id="loveModal" class="modal">
+<!-- POPUPS -->
+<div id="modal" class="modal">
   <div class="modal-box">
-    <h3>❤️ Hey Raj</h3>
-    <p>Compilation successful.<br>No bugs found.<br>Only love detected.</p>
-    <button onclick="closeModal()">close</button>
+  <h3>❤️ Compilation Successful</h3>
+  <p>No bugs found. Only love detected.</p>
+  <button onclick="closeModal()">close</button>
   </div>
 </div>
 
-<div id="noteModal" class="modal">
+<div id="note" class="modal">
   <div class="modal-box">
-    <h3>For You ❤️</h3>
-    <p>You are my safest place and my favorite person.</p>
-    <button onclick="closeNote()">close</button>
+  <h3>For You ❤️</h3>
+  <p>You are my safest place and my favorite person.</p>
+  <button onclick="closeNote()">close</button>
   </div>
 </div>
 
 
-<!-- ===== JAVASCRIPT ===== -->
 <script>
-
-/* SONG DATA (EDIT TITLES + LINKS) */
-const songs = [
-addSong(1,"YE FITOOR MERA","Our beginning, wrapped in one song.","https://music.youtube.com/watch?v=Zkqhiil2kSo&si=tJGMT3E6O5Z22crB");
-addSong(2,"BEKAL BHELA JIYARA","This song feels like home and you.","https://music.youtube.com/watch?v=qG2XyhCvK1g&si=oGbuoJ7cCK98uFLt");
-addSong(3,"DOORON DOORON","Even distance chooses you.","https://music.youtube.com/watch?v=U_nAFr9tLYg&si=VxXeIpwcN9ELTeUp");
-addSong(4,"PEHLA NASHA","Still the same first-love feeling.","https://music.youtube.com/watch?v=1R8MGdgZDns&si=Molya_gDXRSF-8yg");
-addSong(5,"SAMJHAWAN","I stayed because my heart already belonged to you.","https://music.youtube.com/watch?v=pUwpLoLlzNQ&si=4KSXE0P3acqonKHR");
-addSong(6,"MAIN RANG SHARBATON KA","This song feels like home, and so do you.","https://music.youtube.com/watch?v=cE4atI_v-Z0&si=xS9qcMfqgzytqDZ0");
-addSong(7,"TU HI MERA","I didn’t search. I found.","https://music.youtube.com/watch?v=_927Er2ZQMI&si=8hUAEPLl4MezXNtb");
-addSong(8,"DAGABAAZ RE","Your favourite way to escape my anger.","https://music.youtube.com/watch?v=9CmAUpXtVFc&si=WN0fd7_DuZbBwr6z");
-addSong(9,"OK JAANU","Love, but make it effortless.","https://music.youtube.com/watch?v=QN507xqvG0w&si=-4gq7Yn5O9TUbtUz");
-addSong(10,"PEHLI NAZAR MEIN","Everything changed right here.","https://music.youtube.com/watch?v=swcCuuQKGJ4&si=qyPiDAWmfvsROFMR");
-addSong(11,"HAAREYA","I hope you find us in this song, the way I do","https://music.youtube.com/watch?v=C14askJ1tO8&si=Y0Ond8oNu7v56B-Y");
-addSong(12,"KABHI KABHI MERE DIL MEIN","In your arms , far from the world","https://music.youtube.com/watch?v=S7TYf9-Cbps&si=5i1quJ5q88_QvCk9");
-addSong(13,"TERE LIYE","Just you","https://music.youtube.com/watch?v=5U5Ru0nTiUM&si=RcFUYJrSNRJncNaw");
-addSong(14,"ARZ KIYA HAI","Not a confession, it’s an offering.","https://music.youtube.com/watch?v=-BJt4fCAtZE&si=9uhnddLKtGJHVinK");
-addSong(15,"AAJ DIN CHADHEYA","The kind of love that doesn’t rush the sunrise.","https://music.youtube.com/watch?v=s9gd8bxkxzs&si=58LYPaYb6LZmWZa6");
-addSong(16,"ISS DEEWANE LADKE KO","Exactly what my heart screams everytime with you","https://music.youtube.com/watch?v=9QkooLCNrL0&si=HTFsLt3k9u3VQ_QX");
-addSong(17,"KAISE MUJHE TUM MIL GAYI","Some meetings don’t feel accidental, just inevitable","https://music.youtube.com/watch?v=6NeVceQd6yI&si=GS7c4fmXHGVPqIHo");
-addSong(18,"MILAN ABHI AADHA ADHURA","Someday....","https://music.youtube.com/watch?v=o-5-bvi4Heo&si=dGAzbrFdZ5cxo4dz");
-addSong(19,"ME BECAUSE OF YOU","❤️❤️","https://music.youtube.com/watch?v=URUf7fWM8FQ&si=rmpIn9-ap7sBANTb");
-addSong(20,"OFFO","Us coded","https://music.youtube.com/watch?v=PXrY9ohnAVM&si=ijw470Guo90Fl_Xy");
-</script>
-];
-
-songs.forEach((title,i)=>{
-document.getElementById("songs").innerHTML+=`
-<div class="song">
-<img src="${i+1}.jpeg">
-<div class="song-info">
-<div class="song-title">${title}</div>
-<div class="song-desc">Our little memory with this song ❤️</div>
-</div>
-<a href="#" target="_blank">Listen</a>
-<span class="like" onclick="toggleLike(this)">♡</span>
-</div>`;
-});
-
-/* like */
 function toggleLike(e){
  e.classList.toggle("active");
  e.innerHTML = e.classList.contains("active") ? "❤" : "♡";
 }
 
-/* timer since 11 Sept 2024 */
 const start=new Date("2024-09-11");
 setInterval(()=>{
  const diff=new Date()-start;
@@ -253,7 +424,11 @@ setInterval(()=>{
  document.getElementById("timer").innerText=`${days} days of choosing you ❤️`;
 },1000);
 
-/* hearts */
+function openModal(){document.getElementById("modal").classList.add("active")}
+function closeModal(){document.getElementById("modal").classList.remove("active")}
+function openNote(){document.getElementById("note").classList.add("active")}
+function closeNote(){document.getElementById("note").classList.remove("active")}
+
 function heart(){
  const h=document.createElement("div");
  h.className="heart";
@@ -264,19 +439,6 @@ function heart(){
  setTimeout(()=>h.remove(),30000);
 }
 setInterval(heart,1200);
-
-/* modal functions */
-function openModal(){document.getElementById("loveModal").classList.add("active");}
-function closeModal(){document.getElementById("loveModal").classList.remove("active");}
-
-function openLoveNote(){document.getElementById("noteModal").classList.add("active");}
-function closeNote(){document.getElementById("noteModal").classList.remove("active");}
-
-/* easter egg */
-document.addEventListener("keydown",e=>{
- if(e.key==="r") alert("You are my favorite constant ❤️");
-});
-
 </script>
 
 </body>

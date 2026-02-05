@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
 <title>For Raj ❤️</title>
 
 <style>
@@ -12,6 +12,279 @@ body{
   color:white;
   overflow-x:hidden;
 }
+
+/* container */
+.container{
+  max-width:950px;
+  margin:auto;
+  padding:60px 20px;
+  position:relative;
+  z-index:2;
+}
+
+/* intro */
+.intro{text-align:center;margin-bottom:50px;}
+.intro h1{font-size:2.8em;margin-bottom:8px;}
+#timer{color:#e63946;margin-top:8px;}
+
+/* button */
+button{
+  background:#161616;
+  color:white;
+  border:none;
+  padding:8px 14px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* songs */
+.song{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  background:#161616;
+  margin-bottom:14px;
+  padding:14px;
+  border-radius:14px;
+  transition:.25s;
+}
+
+.song:hover{
+  transform:translateX(6px);
+  background:#1f1f1f;
+}
+
+.song img{
+  width:80px;
+  height:80px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.song-info{flex:1;}
+.song-title{font-weight:bold;}
+.song-desc{font-size:.9em;color:#aaa;margin-top:3px;}
+
+.song a{
+  color:#e63946;
+  text-decoration:none;
+  margin-right:12px;
+}
+
+.like{cursor:pointer;font-size:20px;color:#555;}
+.like.active{color:#e63946;}
+
+/* gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:40px;
+}
+.gallery img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* letter */
+.letter{
+  text-align:center;
+  color:#aaa;
+  margin-top:60px;
+}
+
+/* falling hearts */
+.heart{
+  position:fixed;
+  top:-10px;
+  color:#e63946;
+  font-size:10px;
+  opacity:.3;
+  animation:fall linear infinite;
+  z-index:1;
+}
+@keyframes fall{
+  from{transform:translateY(0)}
+  to{transform:translateY(120vh)}
+}
+
+/* aesthetic modal */
+.modal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:rgba(0,0,0,.6);
+  backdrop-filter:blur(6px);
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:999;
+}
+.modal.active{opacity:1;pointer-events:auto;}
+
+.modal-box{
+  background:#161616;
+  padding:30px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 0 25px rgba(230,57,70,.4);
+}
+.modal-box h3{color:#e63946;margin-bottom:10px;}
+</style>
+</head>
+
+
+<body>
+<div class="container">
+
+<!-- ===== INTRO ===== -->
+<div class="intro">
+<h1>Hi Raj ❤️</h1>
+<p>I couldn't wrap my feelings in a gift, so I coded them instead.</p>
+<p id="timer"></p>
+
+<button onclick="openModal()">Run Love.exe</button>
+</div>
+
+
+<!-- ===== SONG LIST ===== -->
+<div id="songs"></div>
+
+
+<!-- ===== GALLERY ===== -->
+<h2>Our Moments 📸</h2>
+<div class="gallery">
+<img src="11.jpeg">
+<img src="12.jpeg">
+<img src="13.jpeg">
+<img src="14.jpeg">
+<img src="15.jpeg">
+<img src="16.jpeg">
+<img src="17.jpeg">
+<img src="18.jpeg">
+</div>
+
+
+<!-- ===== LETTER ===== -->
+<div class="letter">
+<p>
+If life were code,<br>
+I'd still choose you in every version ❤️
+</p>
+
+<button onclick="openLoveNote()">Click if you're smiling 🙂</button>
+</div>
+
+</div>
+
+
+<!-- ===== MODALS ===== -->
+<div id="loveModal" class="modal">
+  <div class="modal-box">
+    <h3>❤️ Hey Raj</h3>
+    <p>Compilation successful.<br>No bugs found.<br>Only love detected.</p>
+    <button onclick="closeModal()">close</button>
+  </div>
+</div>
+
+<div id="noteModal" class="modal">
+  <div class="modal-box">
+    <h3>For You ❤️</h3>
+    <p>You are my safest place and my favorite person.</p>
+    <button onclick="closeNote()">close</button>
+  </div>
+</div>
+
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+
+/* SONG DATA (EDIT TITLES + LINKS) */
+const songs = [
+addSong(1,"YE FITOOR MERA","Our beginning, wrapped in one song.","https://music.youtube.com/watch?v=Zkqhiil2kSo&si=tJGMT3E6O5Z22crB");
+addSong(2,"BEKAL BHELA JIYARA","This song feels like home and you.","https://music.youtube.com/watch?v=qG2XyhCvK1g&si=oGbuoJ7cCK98uFLt");
+addSong(3,"DOORON DOORON","Even distance chooses you.","https://music.youtube.com/watch?v=U_nAFr9tLYg&si=VxXeIpwcN9ELTeUp");
+addSong(4,"PEHLA NASHA","Still the same first-love feeling.","https://music.youtube.com/watch?v=1R8MGdgZDns&si=Molya_gDXRSF-8yg");
+addSong(5,"SAMJHAWAN","I stayed because my heart already belonged to you.","https://music.youtube.com/watch?v=pUwpLoLlzNQ&si=4KSXE0P3acqonKHR");
+addSong(6,"MAIN RANG SHARBATON KA","This song feels like home, and so do you.","https://music.youtube.com/watch?v=cE4atI_v-Z0&si=xS9qcMfqgzytqDZ0");
+addSong(7,"TU HI MERA","I didn’t search. I found.","https://music.youtube.com/watch?v=_927Er2ZQMI&si=8hUAEPLl4MezXNtb");
+addSong(8,"DAGABAAZ RE","Your favourite way to escape my anger.","https://music.youtube.com/watch?v=9CmAUpXtVFc&si=WN0fd7_DuZbBwr6z");
+addSong(9,"OK JAANU","Love, but make it effortless.","https://music.youtube.com/watch?v=QN507xqvG0w&si=-4gq7Yn5O9TUbtUz");
+addSong(10,"PEHLI NAZAR MEIN","Everything changed right here.","https://music.youtube.com/watch?v=swcCuuQKGJ4&si=qyPiDAWmfvsROFMR");
+addSong(11,"HAAREYA","I hope you find us in this song, the way I do","https://music.youtube.com/watch?v=C14askJ1tO8&si=Y0Ond8oNu7v56B-Y");
+addSong(12,"KABHI KABHI MERE DIL MEIN","In your arms , far from the world","https://music.youtube.com/watch?v=S7TYf9-Cbps&si=5i1quJ5q88_QvCk9");
+addSong(13,"TERE LIYE","Just you","https://music.youtube.com/watch?v=5U5Ru0nTiUM&si=RcFUYJrSNRJncNaw");
+addSong(14,"ARZ KIYA HAI","Not a confession, it’s an offering.","https://music.youtube.com/watch?v=-BJt4fCAtZE&si=9uhnddLKtGJHVinK");
+addSong(15,"AAJ DIN CHADHEYA","The kind of love that doesn’t rush the sunrise.","https://music.youtube.com/watch?v=s9gd8bxkxzs&si=58LYPaYb6LZmWZa6");
+addSong(16,"ISS DEEWANE LADKE KO","Exactly what my heart screams everytime with you","https://music.youtube.com/watch?v=9QkooLCNrL0&si=HTFsLt3k9u3VQ_QX");
+addSong(17,"KAISE MUJHE TUM MIL GAYI","Some meetings don’t feel accidental, just inevitable","https://music.youtube.com/watch?v=6NeVceQd6yI&si=GS7c4fmXHGVPqIHo");
+addSong(18,"MILAN ABHI AADHA ADHURA","Someday....","https://music.youtube.com/watch?v=o-5-bvi4Heo&si=dGAzbrFdZ5cxo4dz");
+addSong(19,"ME BECAUSE OF YOU","❤️❤️","https://music.youtube.com/watch?v=URUf7fWM8FQ&si=rmpIn9-ap7sBANTb");
+addSong(20,"OFFO","Us coded","https://music.youtube.com/watch?v=PXrY9ohnAVM&si=ijw470Guo90Fl_Xy");
+</script>
+];
+
+songs.forEach((title,i)=>{
+document.getElementById("songs").innerHTML+=`
+<div class="song">
+<img src="${i+1}.jpeg">
+<div class="song-info">
+<div class="song-title">${title}</div>
+<div class="song-desc">Our little memory with this song ❤️</div>
+</div>
+<a href="#" target="_blank">Listen</a>
+<span class="like" onclick="toggleLike(this)">♡</span>
+</div>`;
+});
+
+/* like */
+function toggleLike(e){
+ e.classList.toggle("active");
+ e.innerHTML = e.classList.contains("active") ? "❤" : "♡";
+}
+
+/* timer since 11 Sept 2024 */
+const start=new Date("2024-09-11");
+setInterval(()=>{
+ const diff=new Date()-start;
+ const days=Math.floor(diff/86400000);
+ document.getElementById("timer").innerText=`${days} days of choosing you ❤️`;
+},1000);
+
+/* hearts */
+function heart(){
+ const h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=(18+Math.random()*10)+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),30000);
+}
+setInterval(heart,1200);
+
+/* modal functions */
+function openModal(){document.getElementById("loveModal").classList.add("active");}
+function closeModal(){document.getElementById("loveModal").classList.remove("active");}
+
+function openLoveNote(){document.getElementById("noteModal").classList.add("active");}
+function closeNote(){document.getElementById("noteModal").classList.remove("active");}
+
+/* easter egg */
+document.addEventListener("keydown",e=>{
+ if(e.key==="r") alert("You are my favorite constant ❤️");
+});
+
+</script>
+
+</body>
+</html>
+
+
+
+
 
 /* container */
 .container{
@@ -133,10 +406,21 @@ body{
 
 <!-- ===== WELCOME ===== -->
 <div class="intro">
-  <h1>Hi Raj ❤️</h1>
-  <p>I couldn’t wrap my feelings in a gift,<br>so I coded them instead.</p>
-  <p id="timer"></p>
-</div>
+ <h1 id="type"></h1>
+
+<script>
+const text="Hi Raj ❤️";
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById("type").innerHTML+=text[i];
+    i++;
+    setTimeout(type,80);
+  }
+}
+type();
+</script>
+
 
 
 <!-- ===== SONG LIST (1–20) ===== -->
@@ -203,6 +487,12 @@ Created with love, chaos and a lot of patience,<br>
 From a metallurgy girl to her favourite computer science❤️
 </p>
 </div>
+<div style="text-align:center; margin-top:20px;">
+  <button onclick="alert('Thank you for being my safest place. I love you ❤️')"
+  style="background:#161616;color:white;border:none;padding:10px 18px;border-radius:8px;cursor:pointer;">
+    Click if you're smiling 🙂
+  </button>
+</div>
 
 </div>
 
@@ -216,7 +506,7 @@ function toggleLike(el){
 }
 
 /* timer */
-const start=new Date("2024-10-11"); // change date
+const start=new Date("2024-09-11"); // change date
 setInterval(()=>{
  const diff=new Date()-start;
  const days=Math.floor(diff/86400000);

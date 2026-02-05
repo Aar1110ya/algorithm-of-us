@@ -41,18 +41,23 @@ h1 {
   padding: 30px;
 }
 
-  .song {
-  position: relative;
+ .song {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 18px;
+  gap: 18px;
+  padding: 14px;
   margin-bottom: 14px;
   border-radius: 14px;
-  background-size: cover;
-  background-position: center;
-  overflow: hidden;
+  background: #161616;
 }
+
+  .song img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 
 /* dark overlay so text is readable */
 .song::before {
@@ -146,15 +151,17 @@ footer {
 
   <div class="playlist">
 
-    <!-- SONG 1 -->
-  <div class="song" style="background-image: url('1.jpeg'); border: 3px solid red;">
+   <div class="song">
+  <img src="1.jpeg">
 
-   <div>
-        <div class="song-title">YE FITOOR MERA</div>
-        <div class="song-desc">Our beginning, wrapped in one song.</div>
-      </div>
-      <a href="https://music.youtube.com/watch?v=Zkqhiil2kSo&si=tJGMT3E6O5Z22crB" target="_blank">Listen</a>
-    </div>
+  <div style="flex:1;">
+    <div class="song-title">YE FITOOR MERA</div>
+    <div class="song-desc">Our beginning, wrapped in one song.</div>
+  </div>
+
+  <a href="YOUR_LINK" target="_blank">Listen</a>
+</div>
+
 
     <!-- SONG 2 -->
     <div class="song" style="background-image: url('2.jpeg');">

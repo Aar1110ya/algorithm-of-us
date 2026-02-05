@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Playlist.exe ❤️</title>
+<title>For Raj ❤️</title>
 
 <style>
 body{
@@ -13,23 +13,31 @@ body{
   overflow-x:hidden;
 }
 
+/* container */
 .container{
-  max-width:900px;
+  max-width:950px;
   margin:auto;
   padding:60px 20px;
   position:relative;
   z-index:2;
 }
 
-h1{
+/* intro */
+.intro{
   text-align:center;
-  font-size:2.7em;
+  margin-bottom:50px;
 }
 
-.subtitle{
-  text-align:center;
-  color:#aaa;
-  margin-bottom:40px;
+.intro h1{
+  font-size:2.8em;
+  margin-bottom:10px;
+}
+
+/* counter */
+#timer{
+  color:#e63946;
+  font-weight:bold;
+  margin-top:10px;
 }
 
 /* SONG CARD */
@@ -46,6 +54,7 @@ h1{
 
 .song:hover{
   background:#1f1f1f;
+  transform: translateX(6px);
 }
 
 .song img{
@@ -71,6 +80,7 @@ h1{
   margin-right:14px;
 }
 
+/* like */
 .like{
   cursor:pointer;
   font-size:20px;
@@ -79,7 +89,27 @@ h1{
 
 .like.active{color:#e63946;}
 
-/* FALLING HEARTS */
+/* gallery */
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:40px;
+}
+
+.gallery img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* footer letter */
+.letter{
+  margin-top:60px;
+  text-align:center;
+  color:#aaa;
+}
+
+/* falling hearts */
 .heart{
   position:fixed;
   top:-10px;
@@ -87,6 +117,7 @@ h1{
   color:#e63946;
   opacity:.35;
   animation:fall linear infinite;
+  z-index:1;
 }
 
 @keyframes fall{
@@ -97,20 +128,21 @@ h1{
 </head>
 
 <body>
+
 <div class="container">
 
-<h1>Playlist.exe ❤️</h1>
-<p class="subtitle">Some feelings are quieter than words.<br>These songs carry them for me.</p>
+<!-- ===== WELCOME ===== -->
+<div class="intro">
+  <h1>Hi Raj ❤️</h1>
+  <p>I couldn’t wrap my feelings in a gift,<br>so I coded them instead.</p>
+  <p id="timer"></p>
+</div>
 
 
-<!-- ========= SONGS (1–20) ========= -->
-
-<!-- COPY YOUR REAL NOTES + LINKS INSIDE -->
-
-<!-- SONG TEMPLATE REPEATED 20 TIMES -->
+<!-- ===== SONG LIST (1–20) ===== -->
 
 <script>
-function song(i,title,note,link){
+function addSong(i,title,note,link){
 document.write(`
 <div class="song">
   <img src="${i}.jpeg">
@@ -120,36 +152,80 @@ document.write(`
   </div>
   <a href="${link}" target="_blank">Listen</a>
   <span class="like" onclick="toggleLike(this)">♡</span>
-</div>`);
+</div>
+`);
 }
 
-song(1,"YE FITOOR MERA","Our beginning, wrapped in one song.","YOUR_LINK");
-song(2,"BEKAL BHELA JIYARA","This song feels like roots, love, and you.","YOUR_LINK");
-song(3,"DOORON DOORON","No matter how far you feel, my choice stays you.","YOUR_LINK");
-song(4,"PEHLA NASHA","Still you. Still this feeling.","YOUR_LINK");
-song(5,"SAMJHAWAN","Like the song, I came—not because I had to, but because my heart already was there.","YOUR_LINK");
-song(6,"Song 6","Add your note here","YOUR_LINK");
-song(7,"Song 7","Add your note here","YOUR_LINK");
-song(8,"Song 8","Add your note here","YOUR_LINK");
-song(9,"Song 9","Add your note here","YOUR_LINK");
-song(10,"Song 10","Add your note here","YOUR_LINK");
-song(11,"Song 11","Add your note here","YOUR_LINK");
-song(12,"Song 12","Add your note here","YOUR_LINK");
-song(13,"Song 13","Add your note here","YOUR_LINK");
-song(14,"Song 14","Add your note here","YOUR_LINK");
-song(15,"Song 15","Add your note here","YOUR_LINK");
-song(16,"Song 16","Add your note here","YOUR_LINK");
-song(17,"Song 17","Add your note here","YOUR_LINK");
-song(18,"Song 18","Add your note here","YOUR_LINK");
-song(19,"Song 19","Add your note here","YOUR_LINK");
-song(20,"Song 20","Add your note here","YOUR_LINK");
+addSong(1,"YE FITOOR MERA","Our beginning, wrapped in one song.","YOUR_LINK");
+addSong(2,"BEKAL BHELA JIYARA","This song feels like home and you.","YOUR_LINK");
+addSong(3,"DOORON DOORON","Even distance chooses you.","YOUR_LINK");
+addSong(4,"PEHLA NASHA","Still the same first-love feeling.","YOUR_LINK");
+addSong(5,"SAMJHAWAN","I stayed because my heart already belonged to you.","YOUR_LINK");
+addSong(6,"Song 6","Add your note","YOUR_LINK");
+addSong(7,"Song 7","Add your note","YOUR_LINK");
+addSong(8,"Song 8","Add your note","YOUR_LINK");
+addSong(9,"Song 9","Add your note","YOUR_LINK");
+addSong(10,"Song 10","Add your note","YOUR_LINK");
+addSong(11,"Song 11","Add your note","YOUR_LINK");
+addSong(12,"Song 12","Add your note","YOUR_LINK");
+addSong(13,"Song 13","Add your note","YOUR_LINK");
+addSong(14,"Song 14","Add your note","YOUR_LINK");
+addSong(15,"Song 15","Add your note","YOUR_LINK");
+addSong(16,"Song 16","Add your note","YOUR_LINK");
+addSong(17,"Song 17","Add your note","YOUR_LINK");
+addSong(18,"Song 18","Add your note","YOUR_LINK");
+addSong(19,"Song 19","Add your note","YOUR_LINK");
+addSong(20,"Song 20","Add your note","YOUR_LINK");
+</script>
 
+
+<!-- ===== MEMORIES GALLERY ===== -->
+<h2 style="margin-top:60px;">Our Moments 📸</h2>
+<div class="gallery">
+<img src="11.jpeg">
+<img src="12.jpeg">
+<img src="13.jpeg">
+<img src="14.jpeg">
+<img src="15.jpeg">
+<img src="16.jpeg">
+<img src="17.jpeg">
+<img src="18.jpeg">
+</div>
+
+
+<!-- ===== FINAL LETTER ===== -->
+<div class="letter">
+<p>
+If life were code,<br>
+I’d still choose you in every version ❤️
+</p>
+</div>
+
+</div>
+
+
+<!-- ===== SCRIPTS ===== -->
+
+<script>
 function toggleLike(el){
-el.classList.toggle("active");
-el.innerHTML = el.classList.contains("active") ? "❤" : "♡";
+  el.classList.toggle("active");
+  el.innerHTML = el.classList.contains("active") ? "❤" : "♡";
 }
 
-/* hearts */
+/* timer */
+const start=new Date("2024-08-01"); // change date
+setInterval(()=>{
+ const diff=new Date()-start;
+ const days=Math.floor(diff/86400000);
+ document.getElementById("timer").innerText=`It's been ${days} days with you ❤️`;
+},1000);
+
+/* easter egg */
+document.addEventListener("keydown",e=>{
+ if(e.key==="r") alert("You are my favorite constant ❤️");
+});
+
+/* falling hearts */
 function createHeart(){
  const h=document.createElement("div");
  h.className="heart";
@@ -162,9 +238,9 @@ function createHeart(){
 setInterval(createHeart,1200);
 </script>
 
-</div>
 </body>
 </html>
+
 
 
 
